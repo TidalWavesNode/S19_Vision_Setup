@@ -15,15 +15,15 @@ Python and pip installed
 ##Usage
 Download the script
 
-wgget
+wget https://raw.githubusercontent.com/TidalWavesNode/S19_Vision_Setup/main/S19.sh
 
 Change persmissions
 chmod +x S19.sh
 
 Run the script:
+bash s19.sh
 
-./your_script.sh
-Follow the prompts and instructions provided by the script.
+#Follow the prompts and instructions provided by the script.
 
 Script Explanation
 Update and upgrade system: Keeps the system up-to-date using apt.
@@ -33,4 +33,4 @@ Install Python dependencies: Uses pip to install required Python packages.
 Run get_model.sh script: Executes the get_model.sh script for additional setup.
 Prompt user for coldkey: Asks if the user wants to create a new coldkey using btcli.
 Prompt user for hotkey: Asks if the user wants to create a new hotkey using btcli.
-Prompt user to save seed phrases and list wallets: Asks if the user wants to save seed phrases and lists wallets using btcli.
+Remind the user to save seed phrases and list wallets.
