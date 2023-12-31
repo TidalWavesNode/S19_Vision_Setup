@@ -41,9 +41,9 @@ read -p "Do you want to create a new coldkey? (yes/no): " create_coldkey
 if [[ "$create_coldkey" == "yes" || "$create_coldkey" == "y" ]]; then
     read -p "Do you want the wallet to have a password? (yes/no): " coldkey_password
     if [ "$coldkey_password" == "yes" ]; then
-        btcli w new_coldkey --wallet.name default --wallet.hotkey default
+        btcli w new_coldkey --wallet.name default
     else
-        btcli w new_coldkey --wallet.name default --wallet.hotkey default --no_password
+        btcli w new_coldkey --wallet.name default --no_password
     fi
 fi
 
