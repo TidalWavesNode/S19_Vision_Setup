@@ -39,18 +39,18 @@ pip install -e .
 # Step 7: Create a new coldkey
 read -p "Do you want to create a new coldkey? (yes/no): " create_coldkey
 if [[ "$create_coldkey" == "yes" || "$create_coldkey" == "y" ]]; then
-    read -p "Do you want the wallet to have a password? (yes/no): " coldkey_password
+    read -p "Do you want the wallet to NOT have a password? (No password is required for registration script to work) (yes/no): " coldkey_password
     if [ "$coldkey_password" == "yes" ]; then
-        btcli w new_coldkey --wallet.name default
-    else
         btcli w new_coldkey --wallet.name default --no_password
+    else
+        btcli w new_coldkey --wallet.name default 
     fi
 fi
 
 # Step 8: Create a new hotkey
 read -p "Do you want to create a new hotkey? (yes/no): " create_hotkey
 if [[ "$create_hotkey" == "yes" || "$create_hotkey" == "y" ]]; then
-    btcli w new_hotkey --wallet.name default --wallet.hotkey default
+    btcli w new_hotkey
 else
     echo "Ending script. No hotkey created."
     exit 0
@@ -68,7 +68,7 @@ prompt_user "Press Enter when you have funded the coldkey."
 
 # Step 10: Prompt user to continue with registration script
 read -p "Do you want to continue with the registration script? (yes/no): " register_script
-if [ "$register_script" == "yes" ]; then
+if [[ "$register_script" == "yes" || "$register_script" == "y" ]]; then
     echo "Note: This registration script could potentially use all funds in the coldkey."
     
     # Countdown before starting registration script
