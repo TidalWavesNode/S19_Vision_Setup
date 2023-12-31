@@ -50,7 +50,7 @@ fi
 # Step 8: Create a new hotkey
 read -p "Do you want to create a new hotkey? (yes/no): " create_hotkey
 if [[ "$create_hotkey" == "yes" || "$create_hotkey" == "y" ]]; then
-    btcli w new_hotkey
+    btcli w new_hotkey --wallet.name default --wallet.hotkey default
 else
     echo "Ending script. No hotkey created."
     exit 0
