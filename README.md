@@ -1,4 +1,4 @@
-## Subnet 19 (Vision) Build
+## Subnet 19 (Vision) 
 ### Vision Setup Script
 
 ### Introduction
