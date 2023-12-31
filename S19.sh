@@ -16,32 +16,29 @@ function countdown() {
     done
 }
 
-# Update and upgrade system
-echo "Updating and upgrading system..."
+# Step 1: Update and upgrade
 sudo apt update && sudo apt upgrade -y
 
-# Install Node.js, npm, and pm2
-echo "Installing Node.js, npm, and pm2..."
+# Step 2: Install Node.js and npm
 sudo apt install nodejs npm -y
+
+# Step 3: Install pm2 globally
 sudo npm i -g pm2
 
-# Clone the vision repository
-echo "Cloning the vision repository..."
+# Step 4: Clone the GitHub repository
 git clone https://github.com/namoray/vision.git
 cd vision
 
-# Install Python dependencies
-echo "Installing Python dependencies..."
+# Step 5: Install Python dependencies
 pip install -r requirements.txt
 pip install -e .
 
-# Run the get_model.sh script
-echo "Running get_model.sh..."
+# Step 6: Run get_model.sh
 ./get_model.sh
 
-# Create a new coldkey
+# Step 7: Create a new coldkey
 read -p "Do you want to create a new coldkey? (yes/no): " create_coldkey
-if [ "$create_coldkey" == "yes" ]; then
+if [[ "$create_coldkey" == "yes" || "$create_coldkey" == "y" ]]; then
     read -p "Do you want the wallet to have a password? (yes/no): " coldkey_password
     if [ "$coldkey_password" == "yes" ]; then
         btcli w new_coldkey
@@ -50,16 +47,17 @@ if [ "$create_coldkey" == "yes" ]; then
     fi
 fi
 
-# Create a new hotkey
+# Step 8: Create a new hotkey
 read -p "Do you want to create a new hotkey? (yes/no): " create_hotkey
-if [ "$create_hotkey" == "yes" ]; then
+if [[ "$create_hotkey" == "yes" || "$create_hotkey" == "y" ]]; then
     btcli w new_hotkey
 else
     echo "Ending script. No hotkey created."
     exit 0
 fi
 
-# Remind user to save seed phrases and then list new wallets
+
+# Step 9: Remind user to save seed phrases and then list new wallets
 read -p "Did you save the seed phrases? (yes/no): " save_seed
 if [ "$save_seed" == "yes" ]; then
     btcli w list
@@ -67,16 +65,16 @@ else
     echo "Script completed without listing wallets."
 fi
 
-# Prompt user to continue with registration script
+# Step 10: Prompt user to continue with registration script
 read -p "Do you want to continue with the registration script? (yes/no): " register_script
 if [ "$register_script" == "yes" ]; then
     echo "Note: This registration script could potentially use all funds in the coldkey."
-       
+    
+    # Countdown before starting registration script
+    countdown 5
+    
     echo "Starting the registration script. This requires the coldkey to not have a password."
     
-	# Countdown before starting registration attempts
-    countdown 5
-	
     # Registration script
     while true
     do
