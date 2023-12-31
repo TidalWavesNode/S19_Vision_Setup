@@ -1,5 +1,5 @@
 Subnet 19 (Vision) Build
-Vision Setup Bash Script
+Vision Setup Script
 
 Introduction
 This Bash script automates the setup process for the "Vision" project, providing a seamless experience for users. The script handles system updates, installs necessary dependencies, clones the project repository, installs Python dependencies, and executes required scripts. User prompts guide the configuration of coldkeys, hotkeys, and wallet information.
