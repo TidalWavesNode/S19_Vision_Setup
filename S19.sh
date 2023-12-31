@@ -39,8 +39,8 @@ pip install -e .
 # Step 7: Create a new coldkey
 read -p "Do you want to create a new coldkey? (yes/no): " create_coldkey
 if [[ "$create_coldkey" == "yes" || "$create_coldkey" == "y" ]]; then
-    read -p "Do you want the wallet to NOT have a password? (No password is required for registration script to work) (yes/no): " coldkey_password
-    if [ "$coldkey_password" == "yes" ]; then
+    read -p "Do you want to create the wallet without a password? (Wallet without a password is required for registration script to work) (yes/no): " coldkey_password
+    if [[ "$create_coldkey" == "yes" || "$create_coldkey" == "y" ]]; then
         btcli w new_coldkey --wallet.name default --no_password
     else
         btcli w new_coldkey --wallet.name default 
