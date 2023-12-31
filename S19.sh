@@ -57,7 +57,7 @@ else
 fi
 
 # Step 9: Inform the user to fund the coldkey and list wallets
-echo "It's time to fund the coldkey with the max amount you are willing to spend on registration."
+echo "It's time to fund the coldkey with the MAXIMUM amount you are willing to spend on registration."
 
 # List wallets
 echo "Listing wallets:"
@@ -74,7 +74,7 @@ if [[ "$register_script" == "yes" || "$register_script" == "y" ]]; then
     # Countdown before starting registration script
     countdown 5
     
-    echo "Starting the registration script. This requires the coldkey to not have a password."
+    echo "Starting the registration script. By default registration will be attempted every 60 seconds. This requires the coldkey to NOT have a password."
     
     # Registration script
     while true
