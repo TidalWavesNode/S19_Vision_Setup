@@ -56,14 +56,15 @@ else
     exit 0
 fi
 
+# Step 9: Inform the user to fund the coldkey and list wallets
+echo "It's time to fund the coldkey with the max amount you are willing to spend on registration."
 
-# Step 9: Remind user to save seed phrases and then list new wallets
-read -p "Did you save the seed phrases? (yes/no): " save_seed
-if [ "$save_seed" == "yes" ]; then
-    btcli w list
-else
-    echo "Script completed without listing wallets."
-fi
+# List wallets
+echo "Listing wallets:"
+btcli w list
+
+# Wait for user acknowledgment
+prompt_user "Press Enter when you have funded the coldkey."
 
 # Step 10: Prompt user to continue with registration script
 read -p "Do you want to continue with the registration script? (yes/no): " register_script
@@ -81,6 +82,5 @@ if [ "$register_script" == "yes" ]; then
         btcli s register --netuid 19 --wallet.name default --wallet.hotkey default --subtensor.network finney --no_prompt
         sleep 60  # Wait for 1 minute
     done
-else
-    echo "Script completed successfully. It is now time to fund the coldkey and register on S19."
+
 fi
